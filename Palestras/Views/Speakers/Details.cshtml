@@ -1,0 +1,75 @@
+﻿@model Lecture.Models.Speakers
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="text-uppercase">Speakers - Detalhes</h3>
+    </div>
+    <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Picture" class="control-label"></label>
+                        <div class="custom-file">
+                            <input asp-for="Picture" class="custom-file-input" />
+                            <label class="custom-file-label" for="customFile">Escolha a Foto</label>
+                        </div>
+                        <span asp-validation-for="Picture" class="text-danger"></span>
+                        <img src="~/Uploads/@Model.Picture" class="img-thumbnail" height="80" width="80" asp-append-version="true" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Qualification" class="control-label"></label>
+                        <input asp-for="Qualification" class="form-control" />
+                        <span asp-validation-for="Qualification" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Experience" class="control-label"></label>
+                        <input asp-for="Experience" class="form-control" />
+                        <span asp-validation-for="Experience" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="DateLecture" class="control-label"></label>
+                        <input asp-for="DateLecture" class="form-control" />
+                        <span asp-validation-for="DateLecture" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="TimeLecture" class="control-label"></label>
+                        <input asp-for="TimeLecture" class="form-control" />
+                        <span asp-validation-for="TimeLecture" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label asp-for="Local" class="control-label"></label>
+                        <textarea asp-for="Local" class="form-control"></textarea>
+                        <span asp-validation-for="Local" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-sm btn-info rounded-0"><i class="fa fa-pencil-alt"></i> Edit</a>
+                <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-sm btn-danger rounded-0"><i class="fa fa-trash-alt"></i> Delete</a>
+                <a asp-action="Index" class="btn btn-sm btn-primary rounded-0"><i class="fas fa-fast-backward"></i> Return</a>
+            </div>
+    </div>
+</div>
