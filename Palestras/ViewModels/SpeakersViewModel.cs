@@ -5,6 +5,7 @@ namespace Lecture.ViewModels
 {
     public class SpeakersViewModel : EditImagemViewModel
     {
+  
         [Required]
         public string Name { get; set; }
 
@@ -28,5 +29,11 @@ namespace Lecture.ViewModels
 
         [Required]
         public string Local { get; set; }
+
+        [Required]
+        public string Picture { get; set; }
+
+
+
     }
 }

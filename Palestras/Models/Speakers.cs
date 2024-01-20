@@ -5,6 +5,8 @@ namespace Lecture.Models
 {
     public class Speakers
     {
+        
+
         [Key]
         public int Id { get; set; }
 

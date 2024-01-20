@@ -7,6 +7,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Lectures.Services;
 
 namespace Lecture.Controllers
 {
@@ -19,6 +20,7 @@ namespace Lecture.Controllers
             _context = context;
             webHostEnvironment = hostEnvironment;
         }
+
 
         // GET: Speakers
         public async Task<IActionResult> Index()
@@ -68,29 +70,19 @@ namespace Lecture.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(SpeakersViewModel model)
         {
-            if (ModelState.IsValid)
+            var speakersService = new SpeakersService(_context);
+
+            model.Picture= ProcessaUploadedFile(model);
+
+            if (await speakersService.CreateSpeakerAsync(model))
             {
-                string nomeArquivoImagem = ProcessaUploadedFile(model);
-
-                Speakers Speakers = new Speakers
-                {
-                    Name = model.Name,
-                    Qualification = model.Qualification,
-                    Experience = model.Experience,
-                    DateLecture = model.DateLecture,
-                    TimeLecture = model.TimeLecture,
-                    Local = model.Local,
-                    Picture = nomeArquivoImagem
-                };
-
-                _context.Add(Speakers);
-                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
             return View(model);
         }
 
-        private string ProcessaUploadedFile(SpeakersViewModel model)
+        public string ProcessaUploadedFile(SpeakersViewModel model)
         {
             string nomeArquivoImagem = null;
 
